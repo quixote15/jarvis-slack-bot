@@ -4,7 +4,8 @@ module.exports = function(controller) {
 
     /* Handle event caused by a user logging in with oauth */
     controller.on('oauth:success', function(payload) {
-
+        console.log('team',payload.identity.team_id)
+        console.log('storage', controller.storage)
         debug('Got a successful login!', payload);
         if (!payload.identity.team_id) {
             debug('Error: received an oauth response without a team id', payload);

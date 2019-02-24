@@ -4,11 +4,13 @@ module.exports = function(webserver, controller) {
 
     var handler = {
         login: function(req, res) {
+            console.log('login',controller.getAuthorizeURL());
             res.redirect(controller.getAuthorizeURL());
         },
         oauth: function(req, res) {
             var code = req.query.code;
             var state = req.query.state;
+            console.log('oauth',req)
 
             // we need to use the Slack API, so spawn a generic bot with no token
             var slackapi = controller.spawn({});
